@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Package Version="5">
+    <PathDelim Value="/"/>
+    <Name Value="bfocus_widget_lcl"/>
+    <Type Value="RunAndDesignTime"/>
+    <Author Value="Berni Software"/>
+    <CompilerOptions>
+      <Version Value="11"/>
+      <PathDelim Value="/"/>
+      <SearchPaths>
+        <IncludeFiles Value="../source/core"/>
+        <OtherUnitFiles Value="../source/core;../source/common;../source/native"/>
+        <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+      </SearchPaths>
+      <Parsing>
+        <SyntaxOptions>
+          <SyntaxMode Value="Delphi"/>
+        </SyntaxOptions>
+      </Parsing>
+    </CompilerOptions>
+    <Description Value="Widget bFocus (chamados, chat ao vivo e release notes) com telas nativas LCL. Para renderizar o HTML do conteúdo com o HtmlViewer, adicione a dependencia FrameViewer09 e defina -dBFOCUS_HTMLVIEWER em Opcoes do pacote &gt; Opcoes personalizadas."/>
+    <License Value="MIT - Copyright (c) 2026 Berni Software"/>
+    <Version Minor="1"/>
+    <Files Count="30">
+      <Item1>
+        <Filename Value="../source/core/BFocusDefines.inc"/>
+        <Type Value="Include"/>
+      </Item1>
+      <Item2>
+        <Filename Value="../source/core/BFocusText.pas"/>
+        <UnitName Value="BFocusText"/>
+      </Item2>
+      <Item3>
+        <Filename Value="../source/core/BFocusJson.pas"/>
+        <UnitName Value="BFocusJson"/>
+      </Item3>
+      <Item4>
+        <Filename Value="../source/core/BFocusHttp.pas"/>
+        <UnitName Value="BFocusHttp"/>
+      </Item4>
+      <Item5>
+        <Filename Value="../source/core/BFocusHttpFpc.pas"/>
+        <UnitName Value="BFocusHttpFpc"/>
+      </Item5>
+      <Item6>
+        <Filename Value="../source/core/BFocusHttpWinInet.pas"/>
+        <AddToUsesPkgSection Value="False"/>
+        <UnitName Value="BFocusHttpWinInet"/>
+      </Item6>
+      <Item7>
+        <Filename Value="../source/core/BFocusHttpDefault.pas"/>
+        <UnitName Value="BFocusHttpDefault"/>
+      </Item7>
+      <Item8>
+        <Filename Value="../source/core/BFocusConfig.pas"/>
+        <UnitName Value="BFocusConfig"/>
+      </Item8>
+      <Item9>
+        <Filename Value="../source/core/BFocusModels.pas"/>
+        <UnitName Value="BFocusModels"/>
+      </Item9>
+      <Item10>
+        <Filename Value="../source/core/BFocusStorage.pas"/>
+        <UnitName Value="BFocusStorage"/>
+      </Item10>
+      <Item11>
+        <Filename Value="../source/core/BFocusApi.pas"/>
+        <UnitName Value="BFocusApi"/>
+      </Item11>
+      <Item12>
+        <Filename Value="../source/core/BFocusFormat.pas"/>
+        <UnitName Value="BFocusFormat"/>
+      </Item12>
+      <Item13>
+        <Filename Value="../source/core/BFocusI18n.pas"/>
+        <UnitName Value="BFocusI18n"/>
+      </Item13>
+      <Item14>
+        <Filename Value="../source/core/BFocusTokens.pas"/>
+        <UnitName Value="BFocusTokens"/>
+      </Item14>
+      <Item15>
+        <Filename Value="../source/core/BFocusLauncher.pas"/>
+        <UnitName Value="BFocusLauncher"/>
+      </Item15>
+      <Item16>
+        <Filename Value="../source/core/BFocusAsync.pas"/>
+        <UnitName Value="BFocusAsync"/>
+      </Item16>
+      <Item17>
+        <Filename Value="../source/core/BFocusVMTickets.pas"/>
+        <UnitName Value="BFocusVMTickets"/>
+      </Item17>
+      <Item18>
+        <Filename Value="../source/core/BFocusVMChat.pas"/>
+        <UnitName Value="BFocusVMChat"/>
+      </Item18>
+      <Item19>
+        <Filename Value="../source/core/BFocusVMReleaseNotes.pas"/>
+        <UnitName Value="BFocusVMReleaseNotes"/>
+      </Item19>
+      <Item20>
+        <Filename Value="../source/common/BFocusNotifier.pas"/>
+        <UnitName Value="BFocusNotifier"/>
+      </Item20>
+      <Item21>
+        <Filename Value="../source/common/BFocusWidgetBase.pas"/>
+        <UnitName Value="BFocusWidgetBase"/>
+      </Item21>
+      <Item22>
+        <Filename Value="../source/common/BFocusGraphics.pas"/>
+        <UnitName Value="BFocusGraphics"/>
+      </Item22>
+      <Item23>
+        <Filename Value="../source/native/BFocusUIControls.pas"/>
+        <UnitName Value="BFocusUIControls"/>
+      </Item23>
+      <Item24>
+        <Filename Value="../source/native/BFocusUIContext.pas"/>
+        <UnitName Value="BFocusUIContext"/>
+      </Item24>
+      <Item25>
+        <Filename Value="../source/native/BFocusUIReleaseNotes.pas"/>
+        <UnitName Value="BFocusUIReleaseNotes"/>
+      </Item25>
+      <Item26>
+        <Filename Value="../source/native/BFocusUIChat.pas"/>
+        <UnitName Value="BFocusUIChat"/>
+      </Item26>
+      <Item27>
+        <Filename Value="../source/native/BFocusUITickets.pas"/>
+        <UnitName Value="BFocusUITickets"/>
+      </Item27>
+      <Item28>
+        <Filename Value="../source/native/BFocusNativeUI.pas"/>
+        <UnitName Value="BFocusNativeUI"/>
+      </Item28>
+      <Item29>
+        <Filename Value="../source/native/BFocusNativeWidget.pas"/>
+        <UnitName Value="BFocusNativeWidget"/>
+      </Item29>
+      <Item30>
+        <Filename Value="../source/native/BFocusReg.pas"/>
+        <HasRegisterProc Value="True"/>
+        <UnitName Value="BFocusReg"/>
+      </Item30>
+    </Files>
+    <RequiredPkgs Count="2">
+      <Item1>
+        <PackageName Value="LCL"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="FCL"/>
+      </Item2>
+    </RequiredPkgs>
+    <UsageOptions>
+      <UnitPath Value="$(PkgOutDir)"/>
+    </UsageOptions>
+    <PublishOptions>
+      <Version Value="2"/>
+    </PublishOptions>
+  </Package>
+</CONFIG>

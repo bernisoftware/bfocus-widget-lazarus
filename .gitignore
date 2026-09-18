@@ -1,0 +1,12 @@
+tests/out/
+**/lib/
+**/backup/
+*.ppu
+*.o
+*.a
+*.compiled
+*.lps
+*.res
+*.exe
+examples/native-demo/native_demo
+bfocus-test-*.ini

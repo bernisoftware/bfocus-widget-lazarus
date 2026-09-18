@@ -1,0 +1,67 @@
+# Espelho bernisoftware/bfocus-widget-lazarus.
+# 1) núcleo + testes com Free Pascal (inclui integração HTTP com o servidor simulado);
+# 2) pacote LCL e exemplo com lazbuild (Lazarus do apt);
+# 3) na tag vX.Y.Z: confere a versão do .lpk e cria o release (distribuição pelo GitHub;
+#    OPM depois).
+name: publish
+
+on:
+  push:
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, ubuntu-24.04]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Free Pascal
+        run: sudo apt-get update && sudo apt-get install -y fpc
+      - name: Fontes (literais ASCII, comentários)
+        run: node tools/check-sources.mjs
+      - name: Compilar testes do núcleo
+        run: sh tests/build-fpc.sh tests/out
+      - name: Testes (cenários + view-models + integração HTTP)
+        run: node tests/run-tests.mjs tests/out/bfocus_tests
+
+  lazbuild:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lazarus
+        run: sudo apt-get update && sudo apt-get install -y lazarus
+      - name: Pacote bfocus_widget_lcl
+        run: lazbuild package/bfocus_widget_lcl.lpk
+      - name: Exemplo (LCL gtk2)
+        run: |
+          lazbuild --add-package package/bfocus_widget_lcl.lpk
+          lazbuild examples/native-demo/native_demo.lpi
+
+  release:
+    needs: [test, lazbuild]
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tag = versão do .lpk
+        run: |
+          V=$(node -e "
+            const s = require('fs').readFileSync('package/bfocus_widget_lcl.lpk', 'utf8');
+            const m = s.match(/<Version( Major=\"(\d+)\")?( Minor=\"(\d+)\")?( Release=\"(\d+)\")?\/>/);
+            console.log([m[2] || 0, m[4] || 0, m[6] || 0].join('.'));")
+          T="${GITHUB_REF_NAME#v}"
+          if [ "$V" != "$T" ]; then echo "tag $T difere do .lpk ($V)"; exit 1; fi
+      - name: Release no GitHub
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --notes-file CHANGELOG.md
