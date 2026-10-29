@@ -60,7 +60,7 @@ Resumo:
 - a consulta do `launcher-state` roda a cada `PollIntervalSeconds` (60) enquanto o app está
   aberto, mesmo sem foco, com o widget fechado;
 - `Notifications = True` mostra um balão na bandeja (`TTrayIcon`) quando o "•" acende;
-- `OnError` recebe `WIDGET_USER_HASH_INVALID`/`WIDGET_VERIFIED_SESSION_REQUIRED` (depois de
+- `OnError` recebe `WIDGET_USER_HASH_INVALID`/`WIDGET_USER_HASH_EXPIRED`/`WIDGET_VERIFIED_SESSION_REQUIRED` (depois de
   uma tentativa com hash novo via `OnUserHashRequest`, se houver), `HTTP_<status>` e
   `WIDGET_CONFIG_FAILED`, uma vez por código;
 - push é só mobile: `RegisterPushToken`/`HandlePush` existem por completude.
